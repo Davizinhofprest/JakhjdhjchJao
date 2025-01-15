@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaoozin Hub Script</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f0ff;
+        }
+        header {
+            background-color: #6a0dad;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        nav ul li a:hover {
+            background-color: #4b0082;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .thumbnail {
+            width: 100%;
+            max-width: 640px;
+            aspect-ratio: 16 / 9;
+            background-color: #ddd;
+            margin: 20px auto;
+            border-radius: 10px;
+            perspective: 1000px;
+            position: relative;
+            cursor: pointer;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            transform-style: preserve-3d;
+            transition: transform 0.2s ease;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            max-width: 600px;
+            margin: 10px auto;
+            text-align: left;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4b0082;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            .thumbnail {
+                width: 90%;
+            }
+            pre {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jaoozin Hub Script</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jaoozin-hub.html">Jaoozin Hub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="thumbnail" id="thumbnail">
+            <img src="https://cdn.discordapp.com/attachments/1319669411027882006/1329073432821891092/4924922222-1735314389428.png?ex=67890397&is=6787b217&hm=1eaae093db941be8332433eaf81ddf9a5582578e9338919bdf971a17317d1614&" alt="Jaoozin Hub Thumbnail">
+        </div>
+        <h2>Jaoozin Hub Script</h2>
+        <pre id="script-code">loadstring(game:HttpGet("https://raw.githubusercontent.com/Davizinhofprest/OaiaJaooBaodapega/refs/heads/main/6e8bf16e68877f75%20(1).txt"))()</pre>
+        <button onclick="copyScript()">Copiar Script</button>
+        <button onclick="downloadScript()">Baixar Script</button>
+         <h1>Br:Jaoozin Hub Script página oficial
+essa e a primeira versao do script estamos trabalhando na v2 url do github Veja no nosso discord https://discord.gg/sgtJ7Tpf5d</h1>
+         <h1>En:Jaoozin Hub Script official page
+This is the first version of the script we are working on v2 url of the github See our discord https://discord.gg/sgtJ7Tpf5d </h1>
+    </div>
+
+    <script>
+        const thumbnail = document.getElementById('thumbnail');
+        const img = thumbnail.querySelector('img');
+
+        thumbnail.addEventListener('mousemove', (e) => {
+            const rect = thumbnail.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            const rotateX = -y / 20;
+            const rotateY = x / 20;
+
+            img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        thumbnail.addEventListener('mouseleave', () => {
+            img.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+
+        function copyScript() {
+            const scriptCode = document.getElementById('script-code').innerText;
+            navigator.clipboard.writeText(scriptCode).then(() => {
+                alert('Script copiado!');
+            });
+        }
+
+        function downloadScript() {
+            const scriptCode = document.getElementById('script-code').innerText;
+            const blob = new Blob([scriptCode], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'JaoozinHubScript.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
